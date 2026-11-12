@@ -17,14 +17,20 @@
 // };
 // ou
 type DefaultInputProps = {
-  id: string; // Esse é um atributo novo
+  id?: string; // Esse é um atributo novo
+  labelText?: string; // Esse é um atributo novo
 } & React.ComponentProps<'input'>; // Aqui estamos usando a interseção de tipos para combinar o tipo e pegando todos os atributos de INPUT DefaultInputProps com o tipo HTMLInputTypeAttribute do React, que já contém todos os tipos de input possíveis.
 
-export function DefaultInput({ id, type }: DefaultInputProps) {
+export function DefaultInput({
+  id,
+  type,
+  labelText,
+  ...rest // Este é o operador rest, que pega todos os atributos que não foram desestruturados e coloca dentro de um objeto chamado rest, que será passado para o input.
+}: DefaultInputProps) {
   return (
     <>
-      <label htmlFor={id}>task</label>
-      <input type={type} id={id} placeholder='Name your task' />
+      {labelText && <label htmlFor={id}>{labelText}</label>}
+      <input type={type} id={id} {...rest} />
     </>
   );
 }
