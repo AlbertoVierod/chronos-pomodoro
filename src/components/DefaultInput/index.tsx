@@ -1,3 +1,5 @@
+import styles from './styles.module.css';
+
 // Dá para colocar o type como opcional, caso não seja passado, o input será do tipo text e a lista de tipos de input é baseada na documentação do MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
 // type DefaultInputProps = {
 //   type?:
@@ -30,7 +32,7 @@ export function DefaultInput({
   return (
     <>
       {labelText && <label htmlFor={id}>{labelText}</label>}
-      <input type={type} id={id} {...rest} />
+      <input className={styles.input} type={type} id={id} {...rest} />
     </>
   );
 }
