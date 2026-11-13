@@ -27,12 +27,12 @@ export function DefaultInput({
   id,
   type,
   labelText,
-  ...rest // Este é o operador rest, que pega todos os atributos que não foram desestruturados e coloca dentro de um objeto chamado rest, que será passado para o input.
+  ...props // Este é o operador props, que é o restante de todas as propriedades que não foram desestruturadas e serão passadas para o input.
 }: DefaultInputProps) {
   return (
     <>
       {labelText && <label htmlFor={id}>{labelText}</label>}
-      <input className={styles.input} type={type} id={id} {...rest} />
+      <input className={styles.input} type={type} id={id} {...props} />
     </>
   );
 }
